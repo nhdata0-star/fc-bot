@@ -6,7 +6,7 @@ import requests
 import socket
 import os
 import time
-from config import PORT, TELEGRAM_BOT_TOKEN  
+from config import PORT, TELEGRAM_BOT_TOKEN
 
 app = Flask(__name__)
 
