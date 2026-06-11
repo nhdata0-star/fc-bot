@@ -163,6 +163,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 RENDER_URL = "https://fc-bot-plv4.onrender.com"
+RENDER_URL = "https://fc-bot-v0cf.onrender.com"
 
 active_users = set()
 user_details = {}
