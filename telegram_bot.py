@@ -120,6 +120,7 @@ if not TELEGRAM_BOT_TOKEN:
     print("ERROR: TELEGRAM_BOT_TOKEN not set!")
     exit(1)
 
+# ✅ সঠিক নতুন URL
 RENDER_URL = "https://fc-bot-vz4u.onrender.com"
 
 active_users = set()
@@ -320,8 +321,6 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await show_page(update, context, "TikTok Booster", "tiktok_boost", "menu_advance", "tiktok_boost")
     elif data == "adv_verify":
         await show_page(update, context, "Meta Verified", "meta_verify", "menu_advance", "meta_verify")
-    else:
-        await query.answer("Unknown button")
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.message.text == '/start':
@@ -332,16 +331,14 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def error_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     print(f"Error: {context.error}")
 
-# =============সমাধান করা run_bot ফাংশন =============
 def run_bot():
     print("Starting Telegram Bot...")
     
-    # Webhook 
     try:
         requests.post(f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/deleteWebhook")
-        print("✅ Webhook deleted successfully")
+        print("✅ Webhook deleted")
     except Exception as e:
-        print(f"⚠️ Webhook delete error: {e}")
+        print(f"Webhook error: {e}")
     
     app = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
     
@@ -350,12 +347,11 @@ def run_bot():
     app.add_handler(CommandHandler("broadcast", broadcast))
     app.add_handler(CommandHandler("total", total_users))
     app.add_handler(CommandHandler("users", show_users))
-    
     app.add_handler(CallbackQueryHandler(handle_callback))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     app.add_error_handler(error_handler)
     
-    print("✅ Bot started! Polling for updates...")
+    print("Bot started! Polling...")
     app.run_polling(drop_pending_updates=True)
 
 if __name__ == '__main__':
