@@ -120,7 +120,7 @@ if not TELEGRAM_BOT_TOKEN:
     print("ERROR: TELEGRAM_BOT_TOKEN not set!")
     exit(1)
 
-RENDER_URL = "https://fc-bot-koc2.onrender.com"
+RENDER_URL = "https://fc-bot-vz4u.onrender.com"
 
 active_users = set()
 user_details = {}
